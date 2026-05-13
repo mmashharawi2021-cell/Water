@@ -13,9 +13,7 @@ window.App={
     this.unsubscribers.push(FirebaseService.listenReports(reports=>{this.state.reports=reports;this.render();}));
     this.unsubscribers.push(FirebaseService.listenFuelEntries(entries=>{this.state.fuelEntries=entries;this.render();}));
   },
-  render(){
-    document.getElementById('app').innerHTML=DashboardUI.render(this.state);
-  },
+  render(){document.getElementById('app').innerHTML=DashboardUI.render(this.state)},
   renderLogin(){this.listen()},
   async login(event){event?.preventDefault?.()},
   openModal(id){document.getElementById(id)?.classList.add('open')},
@@ -35,16 +33,13 @@ window.App={
     modal.classList.add('open');
   },
   reportDetailsHtml(report){
-    const title=Components.esc(report.title||'تقرير يومي');
-    const date=Format.date(report.reportDate);
-    const fuel=Format.pretty(report.fuel?.consumedDaily);
-    const production=Format.pretty(report.water?.dailyProduction);
-    const filled=Format.pretty(report.water?.filledWater);
-    const cars=Format.pretty(report.water?.carsCount);
-    const reject=Format.pretty(report.water?.rejectWater);
-    const hours=Components.esc(report.generator?.totalRunHours||'');
-    const notes=Components.esc(report.notes||'لا توجد ملاحظات');
-    return `<div class="details-stack"><span class="badge">${date}</span><h3>${title}</h3><div class="detail-grid"><article><span>ساعات التشغيل</span><strong>${hours||'_'}</strong></article><article><span>وقود مستخدم</span><strong>${fuel} لتر</strong></article><article><span>الإنتاج</span><strong>${production} كوب</strong></article><article><span>المعبأ</span><strong>${filled} كوب</strong></article><article><span>السيارات</span><strong>${cars}</strong></article><article><span>العادم</span><strong>${reject} كوب</strong></article></div><div class="notes-box"><span>ملاحظات</span><p>${notes}</p></div></div>`;
+    const text=ReportsUI.formatReport(report);
+    return `<div class="details-stack report-text-view"><div class="form-actions"><button class="btn primary" onclick="App.copyReportText()">نسخ التقرير</button></div><pre id="officialReportText">${Components.esc(text)}</pre></div>`;
+  },
+  async copyReportText(){
+    const text=document.getElementById('officialReportText')?.textContent||'';
+    if(!text) return;
+    try{await navigator.clipboard.writeText(text);alert('تم نسخ التقرير')}catch{alert('تعذر النسخ')}
   },
   renderError(message){document.getElementById('app').innerHTML='<main class="app-shell"><div class="container"><section class="section glass"><h3>خطأ</h3><p>'+message+'</p></section></div></main>'}
 };
