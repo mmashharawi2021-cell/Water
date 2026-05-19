@@ -1,0 +1,717 @@
+/* 
+   Water Operations Reporting System - Professional Executive Overhaul
+   Official Executive Dark & Light Themes (Sapphire Navy & Classic Slate)
+   Designed specifically for Saleh Al-Dahnoun (صالح الدحنون)
+   Created: May 2026
+*/
+
+/* ==========================================
+   1. LAYOUT SAFE AREA & LAYOUT CONSTRAINTS
+   ========================================== */
+:root {
+  --safe-bottom-space: 190px !important;
+}
+
+body {
+  padding-bottom: 190px !important;
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif !important;
+}
+
+.app-shell {
+  padding-top: 56px !important;
+  padding-bottom: 190px !important;
+}
+
+.bottom-space {
+  min-height: 190px !important;
+}
+
+.cards-section:last-of-type,
+.export-center-section,
+.incoming-fuel-section {
+  margin-bottom: 150px !important;
+}
+
+/* ==========================================
+   2. GENERAL STYLING & PREMIUM SHADOWS
+   ========================================== */
+* {
+  text-shadow: none !important;
+  box-shadow: none;
+}
+
+/* Smooth transitions for all visual changes */
+.hero,
+.stats article,
+.kpi-card,
+.kpi-wide,
+.report-card,
+.details,
+.incoming-fuel-section,
+.export-center-section,
+.modal-panel,
+.btn,
+.tab {
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* ==========================================
+   3. CORPORATE DARK THEME (SAPPHIRE DEEP NAVY)
+   ========================================== */
+body.theme-dark,
+body:not(.theme-light) {
+  --bg-primary: #0b0f19 !important;
+  --bg-panel: #1e293b !important;
+  --bg-card: rgba(30, 41, 59, 0.7) !important;
+  --border-color: rgba(148, 163, 184, 0.12) !important;
+  --text-primary: #f8fafc !important;
+  --text-muted: #94a3b8 !important;
+  --text-eyebrow: #38bdf8 !important;
+  
+  --btn-primary-bg: linear-gradient(135deg, #0284c7, #0369a1) !important;
+  --btn-primary-border: #38bdf8 !important;
+  --btn-primary-text: #ffffff !important;
+  
+  --btn-secondary-bg: #1e293b !important;
+  --btn-secondary-border: rgba(148, 163, 184, 0.2) !important;
+  --btn-secondary-text: #cbd5e1 !important;
+  
+  background: radial-gradient(circle at 10% 5%, rgba(2, 132, 199, 0.08), transparent 32%), 
+              radial-gradient(circle at 90% 85%, rgba(16, 185, 129, 0.04), transparent 35%), 
+              linear-gradient(135deg, #090d16 0%, #0f172a 100%) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Dark mode panel background overrides */
+body.theme-dark .hero,
+body.theme-dark .cards-section,
+body.theme-dark .details,
+body.theme-dark .login-card,
+body.theme-dark .login-visual,
+body.theme-dark .modal-panel,
+body.theme-dark .stats article,
+body.theme-dark .confirm-card,
+body.theme-dark .incoming-fuel-section,
+body.theme-dark .export-center-section {
+  background: var(--bg-panel) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.theme-dark .report-card,
+body.theme-dark .detail-grid article,
+body.theme-dark .beneficiary-summary,
+body.theme-dark .tests-summary,
+body.theme-dark .beneficiary-cards article,
+body.theme-dark .test-cards article,
+body.theme-dark .official-report summary,
+body.theme-dark .report-actions-panel {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+body.theme-dark .btn:not(.primary):not(.danger),
+body.theme-dark .tab:not(.active),
+body.theme-dark input,
+body.theme-dark textarea,
+body.theme-dark select {
+  background: #0f172a !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==========================================
+   4. CORPORATE LIGHT THEME (CLASSIC SLATE)
+   ========================================== */
+body.theme-light {
+  --bg-primary: #f8fafc !important;
+  --bg-panel: #ffffff !important;
+  --bg-card: #f8fafc !important;
+  --border-color: #cbd5e1 !important;
+  --text-primary: #0f172a !important;
+  --text-muted: #334155 !important;
+  --text-eyebrow: #0284c7 !important;
+  
+  --btn-primary-bg: #0f172a !important;
+  --btn-primary-border: #1e293b !important;
+  --btn-primary-text: #ffffff !important;
+  
+  --btn-secondary-bg: #ffffff !important;
+  --btn-secondary-border: #cbd5e1 !important;
+  --btn-secondary-text: #0f172a !important;
+  
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Light mode panel background overrides */
+body.theme-light .hero,
+body.theme-light .cards-section,
+body.theme-light .details,
+body.theme-light .login-card,
+body.theme-light .login-visual,
+body.theme-light .modal-panel,
+body.theme-light .stats article,
+body.theme-light .confirm-card,
+body.theme-light .incoming-fuel-section,
+body.theme-light .export-center-section {
+  background: var(--bg-panel) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 20px -5px rgba(15, 23, 42, 0.08) !important;
+  color: var(--text-primary) !important;
+}
+
+body.theme-light .report-card,
+body.theme-light .detail-grid article,
+body.theme-light .beneficiary-summary,
+body.theme-light .tests-summary,
+body.theme-light .beneficiary-cards article,
+body.theme-light .test-cards article,
+body.theme-light .official-report summary,
+body.theme-light .report-actions-panel {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+  color: var(--text-primary) !important;
+}
+
+body.theme-light .btn:not(.primary):not(.danger),
+body.theme-light .tab:not(.active),
+body.theme-light input,
+body.theme-light textarea,
+body.theme-light select {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: var(--text-primary) !important;
+}
+
+/* High contrast text definitions */
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light strong,
+body.theme-light td,
+body.theme-light th {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+body.theme-light .eyebrow,
+body.theme-light .report-card span,
+body.theme-light .section-head .eyebrow {
+  color: var(--text-eyebrow) !important;
+  font-weight: 900 !important;
+}
+
+body.theme-light .hero p,
+body.theme-light .muted,
+body.theme-light .report-card small,
+body.theme-light .report-card em,
+body.theme-light .detail-grid span,
+body.theme-light .test-cards span,
+body.theme-light .beneficiary-cards span,
+body.theme-light .stats article small {
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================
+   5. BUTTONS, TABS & FORM ELEMENTS (EXECUTIVE)
+   ========================================== */
+.btn, .tab {
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  padding: 10px 16px !important;
+  cursor: pointer !important;
+  border: 1px solid transparent !important;
+}
+
+/* Primary Button Styling */
+.btn.primary,
+.tab.active,
+.action-float {
+  background: var(--btn-primary-bg) !important;
+  border: 1px solid var(--btn-primary-border) !important;
+  color: var(--btn-primary-text) !important;
+}
+
+.btn.primary:hover,
+.tab.active:hover,
+.action-float:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Secondary Button Styling */
+.btn:not(.primary):not(.danger),
+.tab:not(.active) {
+  background: var(--btn-secondary-bg) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+  color: var(--btn-secondary-text) !important;
+}
+
+.btn:not(.primary):not(.danger):hover,
+.tab:not(.active):hover {
+  background: rgba(148, 163, 184, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Danger Button Styling */
+.btn.danger {
+  background: #ef4444 !important;
+  border: 1px solid #f87171 !important;
+  color: #ffffff !important;
+}
+
+.btn.danger:hover {
+  background: #dc2626 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Input Fields & Textareas styling */
+input, textarea, select {
+  border-radius: 8px !important;
+  padding: 11px 14px !important;
+  font-size: 0.92rem !important;
+  outline: none !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+/* ==========================================
+   6. STATS & KPI CARDS (FIX CLIPPING BUG)
+   ========================================== */
+.dashboard-totals,
+.stats.dashboard-totals {
+  gap: 12px !important;
+  margin: 16px 0 !important;
+}
+
+.dashboard-totals article,
+.stats.dashboard-totals article,
+.kpi-card,
+.kpi-wide {
+  min-height: 122px !important;
+  height: auto !important; /* Allow growing dynamically */
+  padding: 16px 18px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  overflow: visible !important; /* Ensure content is never clipped */
+}
+
+/* Make wide cards span 2 columns correctly */
+.kpi-wide {
+  grid-column: span 2 !important;
+}
+
+/* Icon positioning */
+.kpi-icon {
+  position: absolute !important;
+  top: 14px !important;
+  left: 14px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.15) !important;
+}
+
+body.theme-light .kpi-icon {
+  background: rgba(2, 132, 199, 0.05) !important;
+}
+
+/* KPI typography fixes to prevent layout shifts & clipping */
+.kpi-card span,
+.kpi-wide span,
+.stats.dashboard-totals article span {
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.kpi-wide strong,
+.kpi-card strong,
+.stats.dashboard-totals article strong {
+  font-size: clamp(23px, 2.2vw, 32px) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  margin: 4px 0 !important;
+  display: block !important;
+  unicode-bidi: plaintext !important;
+}
+
+.kpi-card small,
+.kpi-wide small,
+.stats.dashboard-totals article small {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin-top: 4px !important;
+  display: block !important;
+  white-space: normal !important; /* Allow text wrap */
+  overflow: visible !important;
+  -webkit-line-clamp: none !important;
+  text-overflow: clip !important;
+}
+
+/* ==========================================
+   7. ARCHIVE REPORT CARDS (EXECUTIVE)
+   ========================================== */
+.reports-grid {
+  gap: 12px !important;
+}
+
+.report-card {
+  min-height: 110px !important;
+  height: auto !important;
+  padding: 14px 16px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: visible !important;
+}
+
+.report-card > span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 6px !important;
+}
+
+.report-card strong {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  margin: 4px 0 6px !important;
+  white-space: normal !important; /* Prevent text clipping */
+  line-height: 1.35 !important;
+}
+
+.report-card small,
+.report-card em {
+  font-size: 0.8rem !important;
+  line-height: 1.45 !important;
+  margin-top: 2px !important;
+  white-space: normal !important; /* Prevent text clipping */
+  display: block !important;
+}
+
+/* Safe card badges */
+.card-badge {
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+}
+
+.card-badge.ok {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+}
+
+.card-badge.warn {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.2) !important;
+}
+
+body.theme-light .card-badge.ok {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+  border-color: #a7f3d0 !important;
+}
+
+body.theme-light .card-badge.warn {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border-color: #fde68a !important;
+}
+
+/* ==========================================
+   8. THEME TOGGLE & HARD REFRESH POSITIONING
+   ========================================== */
+.theme-switch-shell {
+  position: fixed !important;
+  top: 18px !important;
+  left: 24px !important;
+  z-index: 1550 !important;
+  transform: scale(0.9) !important;
+  opacity: 1 !important;
+}
+
+/* Re-style switch wrapper for high-end look */
+.theme-toggle-track {
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.theme-light .theme-toggle-track {
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  background: #e2e8f0 !important;
+}
+
+body.theme-light .theme-toggle-thumb {
+  background: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hard-refresh-btn {
+  position: fixed !important;
+  top: 18px !important;
+  right: 24px !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  z-index: 1550 !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3) !important;
+  color: #ffffff !important;
+}
+
+body.theme-light .hard-refresh-btn {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+.hard-refresh-btn:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1.15) !important;
+}
+
+/* ==========================================
+   9. EXPORT CENTER STYLING OVERRIDES
+   ========================================== */
+.export-center-section .export-type-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+}
+
+.export-center-section .export-group {
+  padding: 18px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+body.theme-light .export-center-section .export-group {
+  background: #f1f5f9 !important;
+}
+
+.export-center-section .export-group h3 {
+  margin: 0 0 12px !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+}
+
+.export-center-section .export-group .btn {
+  border-radius: 6px !important;
+  font-size: 0.88rem !important;
+  margin: 6px 0 !important;
+  min-height: 38px !important;
+  background: var(--btn-secondary-bg) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+  color: var(--btn-secondary-text) !important;
+}
+
+.export-center-section .export-group .btn.active {
+  background: var(--btn-primary-bg) !important;
+  border-color: var(--btn-primary-border) !important;
+  color: var(--btn-primary-text) !important;
+}
+
+.export-center-section .export-form {
+  margin-top: 18px !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.export-center-section .export-form label {
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================
+   10. BOTTOM NAVIGATION BAR
+   ========================================== */
+.bottom-nav {
+  bottom: 16px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: min(600px, calc(100vw - 32px)) !important;
+  border-radius: 20px !important;
+  border: 1px solid var(--border-color) !important;
+  background: rgba(30, 41, 59, 0.9) !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  z-index: 1400 !important;
+}
+
+body.theme-light .bottom-nav {
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+.bottom-nav button {
+  color: var(--text-muted) !important;
+  padding: 8px !important;
+}
+
+.bottom-nav button span {
+  font-size: 1.4rem !important;
+}
+
+.bottom-nav button b {
+  font-size: 0.78rem !important;
+}
+
+.bottom-nav .main {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  background: var(--btn-primary-bg) !important;
+  border: 2px solid var(--bg-primary) !important;
+  color: var(--btn-primary-text) !important;
+  top: -24px !important;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25) !important;
+}
+
+body.theme-light .bottom-nav .main {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* ==========================================
+   11. DATA QUALITY & INCOMING FUEL
+   ========================================== */
+.incoming-fuel-section,
+.export-center-section {
+  border-radius: 20px !important;
+  padding: 24px !important;
+  margin-top: 18px !important;
+}
+
+.fuel-head,
+.export-head,
+.section-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 18px !important;
+  gap: 16px !important;
+}
+
+/* Fuel Table Styling */
+.fuel-table-wrap {
+  border-radius: 12px !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+table {
+  background: transparent !important;
+}
+
+th {
+  background: rgba(148, 163, 184, 0.06) !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+td {
+  font-size: 0.9rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* ==========================================
+   12. RESPONSIVENESS OVERRIDES
+   ========================================== */
+@media (max-width: 980px) {
+  .export-center-section .export-type-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .export-center-section .export-form {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding-top: 76px !important;
+  }
+  
+  .theme-switch-shell {
+    top: 16px !important;
+    left: 16px !important;
+    transform: scale(0.8) !important;
+  }
+  
+  .hard-refresh-btn {
+    top: 16px !important;
+    right: 16px !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+  
+  .stats.dashboard-totals {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  
+  .kpi-wide {
+    grid-column: span 2 !important;
+  }
+  
+  .kpi-card, .kpi-wide, .stats.dashboard-totals article {
+    min-height: 110px !important;
+    padding: 12px 14px !important;
+  }
+  
+  .export-center-section .export-type-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .export-center-section .export-form {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 540px) {
+  :root {
+    --safe-bottom-space: 125px !important;
+  }
+  body, .app-shell {
+    padding-bottom: 125px !important;
+  }
+  .bottom-nav {
+    transform: translateX(-50%) scale(0.82) !important;
+    bottom: 4px !important;
+  }
+}
